@@ -14,6 +14,7 @@ function initializeShip(letter, counter) {
   const x = Math.floor(Math.random() * 10);
   const y = Math.floor(Math.random() * 10);
 
+  // place the ship if the cell is available
   if (!grid[x][y]) {
     grid[x][y] = letter;
     counter--;
@@ -22,6 +23,7 @@ function initializeShip(letter, counter) {
     return;
   }
 
+  // recursively call if ships remaining
   if (counter > 0) {
     initializeShip(letter, counter); // add another ship
   }
@@ -30,7 +32,7 @@ function initializeShip(letter, counter) {
 // render the grid
 function renderGrid() {
   for (let row of grid) {
-    var outputRow = "";
+    let outputRow = "";
     for (let element of row) {
       if (element) {
         outputRow += " " + element;
